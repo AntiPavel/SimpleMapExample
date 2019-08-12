@@ -7,9 +7,9 @@
 //
 
 import Foundation
-import CoreLocation
+import MapKit
 
-public struct Car: Decodable {
+public final class Car: NSObject, Decodable {
 
     // swiftlint:disable identifier_name
     var id: String
@@ -31,16 +31,22 @@ public struct Car: Decodable {
 
 }
 
-public extension Car {
-
-    var coordinates: CLLocationCoordinate2D {
+extension Car: MKAnnotation {
+    public var coordinate: CLLocationCoordinate2D {
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
+    public var title: String? {
+        return name
+    }
+    public var subtitle: String? {
+        return licensePlate
+    }
+}
 
+public extension Car {
     var transmissionType: TransmissionType? {
         return TransmissionType(rawValue: transmission)
     }
-
     // here should be more computed properties wrapped to enums for sefety but i have no DB documentation
     // since I have no DB details I'm not sure if i know all the used modelIdentifiers, series, fuelTypes, groups, cleanlinesses and other
 }

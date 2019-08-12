@@ -23,7 +23,7 @@ final class ImageCache: NSCache<NSString, UIImage> {
     }
     
     @objc private func clearCache() {
-        self.removeAllObjects()
+        removeAllObjects()
     }
     
     private func totalCostLimit() -> Int {

@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		DA2903B823017D92005653AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2903B723017D92005653AA /* AppDelegate.swift */; };
-		DA2903BA23017D92005653AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2903B923017D92005653AA /* ViewController.swift */; };
-		DA2903BD23017D92005653AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA2903BB23017D92005653AA /* Main.storyboard */; };
 		DA2903BF23017D93005653AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA2903BE23017D93005653AA /* Assets.xcassets */; };
 		DA2903C223017D93005653AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA2903C023017D93005653AA /* LaunchScreen.storyboard */; };
 		DA2903CD23017D93005653AA /* SimpleMapExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2903CC23017D93005653AA /* SimpleMapExampleTests.swift */; };
@@ -21,6 +19,10 @@
 		DA46428C2301ED6100EC4D6D /* URLSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA46428B2301ED6100EC4D6D /* URLSessionExtension.swift */; };
 		DA46428E2301ED9900EC4D6D /* UIImageView+UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA46428D2301ED9900EC4D6D /* UIImageView+UIImageExtension.swift */; };
 		DA4642902301F96A00EC4D6D /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA46428F2301F96A00EC4D6D /* ImageCache.swift */; };
+		DA4642942302042500EC4D6D /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4642932302042500EC4D6D /* TabBarViewController.swift */; };
+		DA4642962302078C00EC4D6D /* CarListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4642952302078C00EC4D6D /* CarListViewController.swift */; };
+		DA46429923020AF900EC4D6D /* CarsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA46429823020AF900EC4D6D /* CarsViewModel.swift */; };
+		DA46429B23021BA100EC4D6D /* CarsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA46429A23021BA100EC4D6D /* CarsMapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,8 +45,6 @@
 /* Begin PBXFileReference section */
 		DA2903B423017D92005653AA /* SimpleMapExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleMapExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA2903B723017D92005653AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DA2903B923017D92005653AA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DA2903BC23017D92005653AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DA2903BE23017D93005653AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA2903C123017D93005653AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA2903C323017D93005653AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,6 +61,10 @@
 		DA46428B2301ED6100EC4D6D /* URLSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtension.swift; sourceTree = "<group>"; };
 		DA46428D2301ED9900EC4D6D /* UIImageView+UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+UIImageExtension.swift"; sourceTree = "<group>"; };
 		DA46428F2301F96A00EC4D6D /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		DA4642932302042500EC4D6D /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		DA4642952302078C00EC4D6D /* CarListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListViewController.swift; sourceTree = "<group>"; };
+		DA46429823020AF900EC4D6D /* CarsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsViewModel.swift; sourceTree = "<group>"; };
+		DA46429A23021BA100EC4D6D /* CarsMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsMapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +123,7 @@
 				DA2903E7230181A3005653AA /* Storyboards */,
 				DA2903E62301815F005653AA /* SupportingFiles */,
 				DA2903E8230181B9005653AA /* ViewControllers */,
+				DA46429723020AD400EC4D6D /* ViewModels */,
 			);
 			path = SimpleMapExample;
 			sourceTree = "<group>";
@@ -154,7 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				DA2903C023017D93005653AA /* LaunchScreen.storyboard */,
-				DA2903BB23017D92005653AA /* Main.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -162,7 +166,9 @@
 		DA2903E8230181B9005653AA /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				DA2903B923017D92005653AA /* ViewController.swift */,
+				DA4642932302042500EC4D6D /* TabBarViewController.swift */,
+				DA4642952302078C00EC4D6D /* CarListViewController.swift */,
+				DA46429A23021BA100EC4D6D /* CarsMapViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -200,6 +206,14 @@
 				DA46428D2301ED9900EC4D6D /* UIImageView+UIImageExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DA46429723020AD400EC4D6D /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				DA46429823020AF900EC4D6D /* CarsViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,7 +323,6 @@
 			files = (
 				DA2903C223017D93005653AA /* LaunchScreen.storyboard in Resources */,
 				DA2903BF23017D93005653AA /* Assets.xcassets in Resources */,
-				DA2903BD23017D92005653AA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,10 +373,13 @@
 				DA46428C2301ED6100EC4D6D /* URLSessionExtension.swift in Sources */,
 				DA2903F023019C0B005653AA /* NetworkService.swift in Sources */,
 				DA4642902301F96A00EC4D6D /* ImageCache.swift in Sources */,
-				DA2903BA23017D92005653AA /* ViewController.swift in Sources */,
 				DA2903B823017D92005653AA /* AppDelegate.swift in Sources */,
+				DA4642962302078C00EC4D6D /* CarListViewController.swift in Sources */,
+				DA46429923020AF900EC4D6D /* CarsViewModel.swift in Sources */,
+				DA46429B23021BA100EC4D6D /* CarsMapViewController.swift in Sources */,
 				DA2903EB23018E14005653AA /* Car.swift in Sources */,
 				DA2903ED23018EF8005653AA /* ErrorResponse.swift in Sources */,
+				DA4642942302042500EC4D6D /* TabBarViewController.swift in Sources */,
 				DA46428E2301ED9900EC4D6D /* UIImageView+UIImageExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,14 +416,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		DA2903BB23017D92005653AA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DA2903BC23017D92005653AA /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DA2903C023017D93005653AA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -470,7 +478,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -525,7 +533,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
