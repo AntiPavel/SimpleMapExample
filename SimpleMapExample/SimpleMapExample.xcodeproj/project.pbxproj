@@ -14,6 +14,10 @@
 		DA2903C223017D93005653AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA2903C023017D93005653AA /* LaunchScreen.storyboard */; };
 		DA2903CD23017D93005653AA /* SimpleMapExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2903CC23017D93005653AA /* SimpleMapExampleTests.swift */; };
 		DA2903D823017D93005653AA /* SimpleMapExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2903D723017D93005653AA /* SimpleMapExampleUITests.swift */; };
+		DA2903EB23018E14005653AA /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2903EA23018E14005653AA /* Car.swift */; };
+		DA2903ED23018EF8005653AA /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2903EC23018EF8005653AA /* ErrorResponse.swift */; };
+		DA2903F023019C0B005653AA /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2903EF23019C0B005653AA /* NetworkService.swift */; };
+		DA2903F32301A0B9005653AA /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2903F22301A0B9005653AA /* Api.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		DA2903D323017D93005653AA /* SimpleMapExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleMapExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA2903D723017D93005653AA /* SimpleMapExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMapExampleUITests.swift; sourceTree = "<group>"; };
 		DA2903D923017D93005653AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA2903EA23018E14005653AA /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
+		DA2903EC23018EF8005653AA /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		DA2903EF23019C0B005653AA /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		DA2903F22301A0B9005653AA /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,10 +106,12 @@
 			isa = PBXGroup;
 			children = (
 				DA2903B723017D92005653AA /* AppDelegate.swift */,
+				DA2903F12301A071005653AA /* Environment */,
 				DA2903E9230181CA005653AA /* Models */,
-				DA2903E8230181B9005653AA /* ViewControllers */,
+				DA2903EE23019BB4005653AA /* Services */,
 				DA2903E7230181A3005653AA /* Storyboards */,
 				DA2903E62301815F005653AA /* SupportingFiles */,
+				DA2903E8230181B9005653AA /* ViewControllers */,
 			);
 			path = SimpleMapExample;
 			sourceTree = "<group>";
@@ -153,8 +163,26 @@
 		DA2903E9230181CA005653AA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DA2903EA23018E14005653AA /* Car.swift */,
+				DA2903EC23018EF8005653AA /* ErrorResponse.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		DA2903EE23019BB4005653AA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DA2903EF23019C0B005653AA /* NetworkService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		DA2903F12301A071005653AA /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				DA2903F22301A0B9005653AA /* Api.swift */,
+			);
+			path = Environment;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,6 +321,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/.swiftlint.yml",
 			);
 			name = "Lint Code";
 			outputFileListPaths = (
@@ -310,8 +339,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA2903F32301A0B9005653AA /* Api.swift in Sources */,
+				DA2903F023019C0B005653AA /* NetworkService.swift in Sources */,
 				DA2903BA23017D92005653AA /* ViewController.swift in Sources */,
 				DA2903B823017D92005653AA /* AppDelegate.swift in Sources */,
+				DA2903EB23018E14005653AA /* Car.swift in Sources */,
+				DA2903ED23018EF8005653AA /* ErrorResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
