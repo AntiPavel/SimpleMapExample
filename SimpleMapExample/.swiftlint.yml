@@ -11,7 +11,12 @@ opt_in_rules:
 
 force_try: error
 force_cast: error
-line_length: 256
+line_length:
+  warning: 150
+  ignores_function_declarations: false
+  ignores_comments: true
+  ignores_interpolated_strings: true
+  ignores_urls: true
 colon:
 apply_to_dictionaries: false
 attributes: warning
