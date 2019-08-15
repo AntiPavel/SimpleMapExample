@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "default_car.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Circle.pdf",
       "scale" : "2x"
     },
     {

@@ -13,56 +13,74 @@ final public class CarsMapViewController: UIViewController {
     
     private var viewModel: CarsViewModel
     
+    lazy private var mapView: MKMapView = {
+        $0.delegate = self
+        $0.showsUserLocation = true
+        $0.register(CarAnnotationView.self, forAnnotationViewWithReuseIdentifier: CarAnnotationView.className)
+        return $0
+    }(MKMapView(frame: view.bounds))
+    
+    lazy private var locationManager: CLLocationManager = {
+        let locationManager = CLLocationManager()
+        if !(CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
+            CLLocationManager.authorizationStatus() ==  .authorizedAlways) {
+            
+            locationManager.requestWhenInUseAuthorization()
+        }
+        return locationManager
+    }()
+    
+    private var currentLocation: CLLocation? {
+        guard CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
+            CLLocationManager.authorizationStatus() ==  .authorizedAlways else {
+            return nil
+        }
+        return locationManager.location
+    }
+    
     init(viewModel: CarsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        configureMap()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    lazy private var mapView: MKMapView = {
-        $0.delegate = self
-        $0.showsUserLocation = true
-        return $0
-    }(MKMapView(frame: view.bounds))
-
-    override public func viewDidLoad() {
-        super.viewDidLoad()
-        configureMap()
-        view.addSubview(mapView)
-    }
 
     func configureMap() {
-        let location = CLLocation(latitude: 48.2, longitude: 11.6)
-        let radius: CLLocationDistance = 60000
-        let coordinateRegion = MKCoordinateRegion(center: location.coordinate,
+        let mucLocation = CLLocation(latitude: 48.1351, longitude: 11.582)
+        let radius: CLLocationDistance = 3000
+        let coordinate = currentLocation?.coordinate ?? mucLocation.coordinate
+        let coordinateRegion = MKCoordinateRegion(center: coordinate,
                                                   latitudinalMeters: radius * 2,
                                                   longitudinalMeters: radius * 2)
         mapView.setRegion(coordinateRegion, animated: true)
+        view.addSubview(mapView)
     }
 
     func update() {
-        DispatchQueue.main.async { [weak self] in self?.mapView.addAnnotations(self?.viewModel.cars ?? []) }
+        DispatchQueue.main.async { [weak self] in
+            self?.mapView.addAnnotations(self?.viewModel.cars ?? [])
+        }
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        update()
     }
 
 }
 
 extension CarsMapViewController: MKMapViewDelegate {
     public func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
-        let reuseIdentifier = "CarAnnotation"
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier) as? MKPinAnnotationView
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: CarAnnotationView.className) as? CarAnnotationView
         if annotationView == nil {
-            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
-            annotationView?.canShowCallout = true
+            annotationView = CarAnnotationView(annotation: annotation, reuseIdentifier: CarAnnotationView.className)
         }
-        annotationView?.pinTintColor = .blue
-        let icon = UIImageView(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
-        icon.download((annotation as? Car)?.carImageUrl ?? "", placeHolder: UIImage(named: "Circle"))
-        annotationView?.leftCalloutAccessoryView = icon
-      //  annotationView?.detailCalloutAccessoryView = icon
+        let carAnnotation = annotation as? Car
+        annotationView?.annotation = carAnnotation
+        annotationView?.setup()
         return annotationView
     }
 }

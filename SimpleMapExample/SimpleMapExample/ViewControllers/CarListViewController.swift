@@ -39,8 +39,6 @@ final public class CarListViewController: UIViewController {
     private lazy var tableView: UITableView = { [unowned self] in
         $0.dataSource = self
         $0.delegate = self
-//        $0.register(UITableViewCell.self,
-//                    forCellReuseIdentifier: UITableViewCell.className)
         $0.showsVerticalScrollIndicator = false
         $0.showsHorizontalScrollIndicator = false
         $0.bounces = true
