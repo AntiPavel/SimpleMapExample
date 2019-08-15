@@ -22,30 +22,20 @@ final class CarAnnotationView: MKAnnotationView {
     private let iconHeight: CGFloat = 50
     private lazy var placeHolder = UIImage(named: "default_car")?.resized(to: iconWidth)
     
-    override var image: UIImage? {
-        didSet {
-            print("didset")
-        }
-    }
-    
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         setup()
     }
     
     func setup() {
-      //  clusteringIdentifier = "Cars"
+//        clusteringIdentifier = "Cars"
+//        displayPriority = .defaultHigh /// built in claster logic looks ugly to me
         frame = CGRect(x: 0, y: 0, width: iconWidth, height: iconHeight)
         download((annotation as? Car)?.carImageUrl ?? "", placeHolder: placeHolder)
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func prepareForDisplay() {
-        super.prepareForDisplay()
-        displayPriority = .defaultLow
     }
     
     override func prepareForReuse() {
