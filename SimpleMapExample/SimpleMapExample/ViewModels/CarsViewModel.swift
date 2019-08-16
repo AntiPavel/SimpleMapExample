@@ -36,9 +36,6 @@ class CarsViewModel {
             case .failure(let error):
                 self?.viewController?.showError(error)
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 8.0) {
-                self?.viewController?.showError(.decodeError)
-            }
         }
     }
 }
