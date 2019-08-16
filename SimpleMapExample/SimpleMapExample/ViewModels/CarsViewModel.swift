@@ -30,18 +30,15 @@ class CarsViewModel {
     
     func update() {
         dataReader.fetchCars { [weak self] result in
-            _ = result.flatMap { cars -> Result<[Car], NetworkServiceError> in
+            switch result {
+            case .success(let cars):
                 self?.cars = cars
-                return cars.isEmpty ? .failure(.invalidUrl): .success(cars)
+            case .failure(let error):
+                self?.viewController?.showError(error)
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 8.0) {
+                self?.viewController?.showError(.decodeError)
             }
         }
-//        dataReader.fetchCars { [weak self] result in
-//            switch result {
-//            case .success(let cars):
-//                self?.cars = cars
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
     }
 }

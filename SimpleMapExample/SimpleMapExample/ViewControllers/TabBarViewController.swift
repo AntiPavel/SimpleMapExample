@@ -49,6 +49,22 @@ final public class TabBarViewController: UITabBarController {
         maps?.update()
     }
 
+    func showError(_ error: NetworkServiceError) {
+        guard let navigationController = selectedViewController as? UINavigationController else { return }
+        guard let selectedViewController = navigationController.viewControllers.last as? Detailable else { return }
+        var details = ""
+        switch error {
+        case .serviceError:
+            details = "Can't reach server please check your internet connection or try later"
+        case .errorResponse(let error):
+            details = error.message ?? "Something went wrong please try later"
+        case .invalidUrl, .invalidEndpoint:
+            details = "Please contact support service"
+        case .invalidResponse, .decodeError:
+            details = "Something went wrong please try later"
+        }
+        selectedViewController.showError(details, title: "Error!")
+    }
 }
 
 extension TabBarViewController: UITabBarControllerDelegate {
