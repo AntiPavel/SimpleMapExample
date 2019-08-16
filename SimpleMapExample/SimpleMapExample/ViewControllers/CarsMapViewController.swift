@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-final public class CarsMapViewController: UIViewController {
+final public class CarsMapViewController: UIViewController, Detailable {
     
     private var viewModel: CarsViewModel
     
@@ -22,19 +22,18 @@ final public class CarsMapViewController: UIViewController {
     
     lazy private var locationManager: CLLocationManager = {
         let locationManager = CLLocationManager()
-        if !(CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
-            CLLocationManager.authorizationStatus() ==  .authorizedAlways) {
-            
-            locationManager.requestWhenInUseAuthorization()
-        }
         return locationManager
     }()
     
-    private var currentLocation: CLLocation? {
-        guard CLLocationManager.authorizationStatus() == .authorizedWhenInUse ||
-            CLLocationManager.authorizationStatus() ==  .authorizedAlways else {
-            return nil
+    func checkLocationAuthorizationStatus() {
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            mapView.showsUserLocation = true
+        } else {
+            locationManager.requestWhenInUseAuthorization()
         }
+    }
+    
+    private var currentLocation: CLLocation? {
         return locationManager.location
     }
     
@@ -50,13 +49,14 @@ final public class CarsMapViewController: UIViewController {
 
     func configureMap() {
         let mucLocation = CLLocation(latitude: 48.1351, longitude: 11.582)
-        let radius: CLLocationDistance = 3000
+        let radius: CLLocationDistance = 10000
         let coordinate = currentLocation?.coordinate ?? mucLocation.coordinate
         let coordinateRegion = MKCoordinateRegion(center: coordinate,
                                                   latitudinalMeters: radius * 2,
                                                   longitudinalMeters: radius * 2)
         mapView.setRegion(coordinateRegion, animated: true)
         view.addSubview(mapView)
+        checkLocationAuthorizationStatus()
     }
 
     func update() {
@@ -74,6 +74,12 @@ final public class CarsMapViewController: UIViewController {
 
 extension CarsMapViewController: MKMapViewDelegate {
     public func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation.isEqual(mapView.userLocation) {
+            let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: nil)
+            annotationView.canShowCallout = true
+            annotationView.calloutOffset = CGPoint(x: -5, y: 5)
+            return annotationView
+        }
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: CarAnnotationView.className) as? CarAnnotationView
         if annotationView == nil {
             annotationView = CarAnnotationView(annotation: annotation, reuseIdentifier: CarAnnotationView.className)
@@ -82,5 +88,16 @@ extension CarsMapViewController: MKMapViewDelegate {
         annotationView?.annotation = carAnnotation
         annotationView?.setup()
         return annotationView
+    }
+    
+    public func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        guard let car  = view.annotation as? Car else { return }
+        let title = car.title ?? ""
+        let details = "\(car.subtitle ?? "") \nTransmission type: \(car.transmissionType?.rawValue ?? "n/a") \nFuel type: \(car.fuelType) \nFuel level: \(car.fuelLevel) \nCleanliness: \(car.innerCleanliness ?? "n/a") \nColor: \(car.color)"
+        
+        showDetails(details,
+                    title: title,
+                    options: "Ok",
+                    completion: {_ in })
     }
 }

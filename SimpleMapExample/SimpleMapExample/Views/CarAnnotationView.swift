@@ -32,6 +32,9 @@ final class CarAnnotationView: MKAnnotationView {
 //        displayPriority = .defaultHigh /// built in claster logic looks ugly to me
         frame = CGRect(x: 0, y: 0, width: iconWidth, height: iconHeight)
         download((annotation as? Car)?.carImageUrl ?? "", placeHolder: placeHolder)
+        canShowCallout = true
+        calloutOffset = CGPoint(x: -5, y: 5)
+        rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -43,6 +46,9 @@ final class CarAnnotationView: MKAnnotationView {
         image = nil
     }
     
+    @objc private func infoButtonAction() {
+        
+    }
 }
 
 private extension CarAnnotationView {

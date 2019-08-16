@@ -24,6 +24,8 @@
 		DA46429923020AF900EC4D6D /* CarsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA46429823020AF900EC4D6D /* CarsViewModel.swift */; };
 		DA46429B23021BA100EC4D6D /* CarsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA46429A23021BA100EC4D6D /* CarsMapViewController.swift */; };
 		DA46429E2305BD9100EC4D6D /* CarAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA46429D2305BD9100EC4D6D /* CarAnnotationView.swift */; };
+		DA8C6B41230625AC0058F7D6 /* CarListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8C6B40230625AC0058F7D6 /* CarListTableViewCell.swift */; };
+		DA8C6B432306325C0058F7D6 /* Detailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8C6B422306325C0058F7D6 /* Detailable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		DA46429823020AF900EC4D6D /* CarsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsViewModel.swift; sourceTree = "<group>"; };
 		DA46429A23021BA100EC4D6D /* CarsMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsMapViewController.swift; sourceTree = "<group>"; };
 		DA46429D2305BD9100EC4D6D /* CarAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarAnnotationView.swift; sourceTree = "<group>"; };
+		DA8C6B40230625AC0058F7D6 /* CarListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListTableViewCell.swift; sourceTree = "<group>"; };
+		DA8C6B422306325C0058F7D6 /* Detailable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detailable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,7 @@
 		DA2903B623017D92005653AA /* SimpleMapExample */ = {
 			isa = PBXGroup;
 			children = (
+				DA8C6B4423063CDF0058F7D6 /* Alerts */,
 				DA2903B723017D92005653AA /* AppDelegate.swift */,
 				DA2903F12301A071005653AA /* Environment */,
 				DA46428A2301ED3700EC4D6D /* Extensions */,
@@ -223,8 +228,17 @@
 			isa = PBXGroup;
 			children = (
 				DA46429D2305BD9100EC4D6D /* CarAnnotationView.swift */,
+				DA8C6B40230625AC0058F7D6 /* CarListTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		DA8C6B4423063CDF0058F7D6 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				DA8C6B422306325C0058F7D6 /* Detailable.swift */,
+			);
+			path = Alerts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -386,12 +400,14 @@
 				DA2903F023019C0B005653AA /* NetworkService.swift in Sources */,
 				DA4642902301F96A00EC4D6D /* ImageCache.swift in Sources */,
 				DA2903B823017D92005653AA /* AppDelegate.swift in Sources */,
+				DA8C6B41230625AC0058F7D6 /* CarListTableViewCell.swift in Sources */,
 				DA4642962302078C00EC4D6D /* CarListViewController.swift in Sources */,
 				DA46429923020AF900EC4D6D /* CarsViewModel.swift in Sources */,
 				DA46429B23021BA100EC4D6D /* CarsMapViewController.swift in Sources */,
 				DA2903EB23018E14005653AA /* Car.swift in Sources */,
 				DA2903ED23018EF8005653AA /* ErrorResponse.swift in Sources */,
 				DA4642942302042500EC4D6D /* TabBarViewController.swift in Sources */,
+				DA8C6B432306325C0058F7D6 /* Detailable.swift in Sources */,
 				DA46428E2301ED9900EC4D6D /* UIImageExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

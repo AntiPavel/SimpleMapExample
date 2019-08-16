@@ -39,7 +39,7 @@ extension Car: MKAnnotation {
         return name
     }
     public var subtitle: String? {
-        return licensePlate
+        return modelName + ": " + licensePlate
     }
 }
 
