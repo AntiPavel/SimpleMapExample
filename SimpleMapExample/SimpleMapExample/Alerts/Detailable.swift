@@ -9,25 +9,21 @@
 import UIKit
 
 protocol Detailable {
-    func showDetails(_ message: String,
-                     title: String,
-                     options: String...,
-                     completion: @escaping (Int) -> Void)
+    func showDetails(_ car: Car,
+                     completion: @escaping () -> Void)
     func showError(_ message: String, title: String)
 }
 
 extension Detailable where Self: UIViewController {
-    func showDetails(_ message: String,
-                     title: String,
-                     options: String...,
-                     completion: @escaping (Int) -> Void) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
-        for (index, option) in options.enumerated() {
-
-            alertController.addAction(UIAlertAction.init(title: option, style: .cancel, handler: { (_) in
-                completion(index)
-            }))
-        }
+    
+    func showDetails(_ car: Car,
+                     completion: @escaping () -> Void) {
+        let title = car.title ?? ""
+        let details = "\(car.subtitle ?? "") \nTransmission type: \(car.transmissionType?.rawValue ?? "n/a") \nFuel type: \(car.fuelType) \nFuel level: \(car.fuelLevel) \nCleanliness: \(car.innerCleanliness ?? "n/a") \nColor: \(car.color)"
+        let alertController = UIAlertController(title: title, message: details, preferredStyle: .actionSheet)
+        alertController.addAction( UIAlertAction.init(title: "Ok",
+                                                      style: .cancel,
+                                                      handler: { (_) in completion() }))
         self.present(alertController, animated: true, completion: nil)
     }
     

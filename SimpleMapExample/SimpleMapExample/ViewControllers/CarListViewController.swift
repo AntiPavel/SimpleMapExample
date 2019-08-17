@@ -76,12 +76,7 @@ extension CarListViewController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         let car: Car = viewModel.cars[indexPath.row]
-        let title = car.title ?? ""
-        let details = "\(car.subtitle ?? "") \nTransmission type: \(car.transmissionType?.rawValue ?? "n/a") \nFuel type: \(car.fuelType) \nFuel level: \(car.fuelLevel) \nCleanliness: \(car.innerCleanliness ?? "n/a") \nColor: \(car.color)"
-        
-        showDetails(details,
-                    title: title,
-                    options: "Ok",
-                    completion: {_ in })
+        showDetails(car,
+                    completion: { })
     }
 }

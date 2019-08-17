@@ -92,12 +92,7 @@ extension CarsMapViewController: MKMapViewDelegate {
     
     public func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         guard let car  = view.annotation as? Car else { return }
-        let title = car.title ?? ""
-        let details = "\(car.subtitle ?? "") \nTransmission type: \(car.transmissionType?.rawValue ?? "n/a") \nFuel type: \(car.fuelType) \nFuel level: \(car.fuelLevel) \nCleanliness: \(car.innerCleanliness ?? "n/a") \nColor: \(car.color)"
-        
-        showDetails(details,
-                    title: title,
-                    options: "Ok",
-                    completion: {_ in })
+        showDetails(car,
+                    completion: { })
     }
 }
