@@ -13,7 +13,7 @@ final public class CarsMapViewController: UIViewController, Detailable {
     
     private var viewModel: CarsViewModel
     
-    lazy private var mapView: MKMapView = {
+    private (set) public lazy var mapView: MKMapView = {
         $0.delegate = self
         $0.showsUserLocation = true
         $0.register(CarAnnotationView.self, forAnnotationViewWithReuseIdentifier: CarAnnotationView.className)

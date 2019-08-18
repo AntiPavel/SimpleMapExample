@@ -26,6 +26,8 @@
 		DA46429E2305BD9100EC4D6D /* CarAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA46429D2305BD9100EC4D6D /* CarAnnotationView.swift */; };
 		DA8C6B41230625AC0058F7D6 /* CarListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8C6B40230625AC0058F7D6 /* CarListTableViewCell.swift */; };
 		DA8C6B432306325C0058F7D6 /* Detailable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8C6B422306325C0058F7D6 /* Detailable.swift */; };
+		DA8C6B462308BA730058F7D6 /* cars.json in Resources */ = {isa = PBXBuildFile; fileRef = DA8C6B452308BA730058F7D6 /* cars.json */; };
+		DA8C6B482308BAD60058F7D6 /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8C6B472308BAD60058F7D6 /* MockNetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		DA46429D2305BD9100EC4D6D /* CarAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarAnnotationView.swift; sourceTree = "<group>"; };
 		DA8C6B40230625AC0058F7D6 /* CarListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListTableViewCell.swift; sourceTree = "<group>"; };
 		DA8C6B422306325C0058F7D6 /* Detailable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detailable.swift; sourceTree = "<group>"; };
+		DA8C6B452308BA730058F7D6 /* cars.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cars.json; sourceTree = "<group>"; };
+		DA8C6B472308BAD60058F7D6 /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +143,8 @@
 		DA2903CB23017D93005653AA /* SimpleMapExampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				DA8C6B452308BA730058F7D6 /* cars.json */,
+				DA8C6B472308BAD60058F7D6 /* MockNetworkService.swift */,
 				DA2903CC23017D93005653AA /* SimpleMapExampleTests.swift */,
 				DA2903CE23017D93005653AA /* Info.plist */,
 			);
@@ -355,6 +361,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA8C6B462308BA730058F7D6 /* cars.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +423,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA8C6B482308BAD60058F7D6 /* MockNetworkService.swift in Sources */,
 				DA2903CD23017D93005653AA /* SimpleMapExampleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -576,6 +584,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = KT99XS8M47;
 				INFOPLIST_FILE = SimpleMapExample/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -595,6 +604,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = KT99XS8M47;
 				INFOPLIST_FILE = SimpleMapExample/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

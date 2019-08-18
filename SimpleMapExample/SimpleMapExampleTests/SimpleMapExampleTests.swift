@@ -11,23 +11,51 @@ import XCTest
 
 class SimpleMapExampleTests: XCTestCase {
 
+    var viewModel: CarsViewModel?
+    var tabVC: TabBarViewController?
+    
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        viewModel = nil
+        tabVC = nil
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testViewModel() {
+        viewModel = CarsViewModel(reader: MockNetworkService())
+        viewModel?.update()
+        let exp = expectation(description: "Test CarsViewModel update function after 2 seconds")
+        let result = XCTWaiter.wait(for: [exp], timeout: 2.0)
+        if result == XCTWaiter.Result.timedOut {
+            XCTAssertEqual(viewModel?.cars.count, 28)
+        } else {
+            XCTFail("CarsViewModel update function test failed")
+        }
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testCarListTableView() {
+        viewModel = CarsViewModel(reader: MockNetworkService())
+        tabVC = TabBarViewController(viewModel: viewModel!)
+        let exp = expectation(description: "Test CarListTableView shows cars after 5 seconds")
+        let result = XCTWaiter.wait(for: [exp], timeout: 5.0)
+        if result == XCTWaiter.Result.timedOut {
+            XCTAssertEqual(tabVC!.list!.tableView.visibleCells.isEmpty, false)
+        } else {
+            XCTFail("CarListTableView show cars test failed")
+        }
+    }
+    
+    func testCarsMapView() {
+        viewModel = CarsViewModel(reader: MockNetworkService())
+        tabVC = TabBarViewController(viewModel: viewModel!)
+        let exp = expectation(description: "Test CarsMapView shows cars after 5 seconds")
+        let result = XCTWaiter.wait(for: [exp], timeout: 5.0)
+        if result == XCTWaiter.Result.timedOut {
+            XCTAssert(tabVC!.maps!.mapView.annotations.count > 1)
+        } else {
+            XCTFail("CarsMapView show cars test failed")
         }
     }
 

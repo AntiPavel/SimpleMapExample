@@ -12,7 +12,7 @@ final public class CarListViewController: UIViewController, Detailable {
 
     private var viewModel: CarsViewModel
     
-    private lazy var tableView: UITableView = { [unowned self] in
+    private (set) public lazy var tableView: UITableView = { [unowned self] in
         $0.dataSource = self
         $0.delegate = self
         $0.showsVerticalScrollIndicator = false

@@ -10,8 +10,8 @@ import UIKit
 
 final public class TabBarViewController: UITabBarController {
     
-    private var list: CarListViewController!
-    private var maps: CarsMapViewController!
+    private (set) public var list: CarListViewController!
+    private (set) public var maps: CarsMapViewController!
     
     private var viewModel: CarsViewModel
     
