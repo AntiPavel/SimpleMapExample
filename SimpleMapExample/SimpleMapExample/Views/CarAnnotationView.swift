@@ -35,6 +35,7 @@ final class CarAnnotationView: MKAnnotationView {
         canShowCallout = true
         calloutOffset = CGPoint(x: -5, y: 5)
         rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        accessibilityIdentifier = annotation?.title ?? "CarAnnotation"
     }
 
     required init?(coder aDecoder: NSCoder) {

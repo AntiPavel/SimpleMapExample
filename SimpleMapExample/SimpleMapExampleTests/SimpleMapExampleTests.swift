@@ -9,6 +9,8 @@
 import XCTest
 @testable import SimpleMapExample
 
+
+/// here aren't full complect of tests, just couple of examples
 class SimpleMapExampleTests: XCTestCase {
 
     var viewModel: CarsViewModel?

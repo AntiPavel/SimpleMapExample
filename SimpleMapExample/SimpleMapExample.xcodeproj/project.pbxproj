@@ -75,6 +75,7 @@
 		DA8C6B422306325C0058F7D6 /* Detailable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detailable.swift; sourceTree = "<group>"; };
 		DA8C6B452308BA730058F7D6 /* cars.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cars.json; sourceTree = "<group>"; };
 		DA8C6B472308BAD60058F7D6 /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
+		DA8C6B492308DD5A0058F7D6 /* MunichLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = MunichLocation.gpx; path = SimpleMapExample/SupportingFiles/MunichLocation.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +106,7 @@
 		DA2903AB23017D92005653AA = {
 			isa = PBXGroup;
 			children = (
+				DA8C6B492308DD5A0058F7D6 /* MunichLocation.gpx */,
 				DA2903B623017D92005653AA /* SimpleMapExample */,
 				DA2903CB23017D93005653AA /* SimpleMapExampleTests */,
 				DA2903D623017D93005653AA /* SimpleMapExampleUITests */,
