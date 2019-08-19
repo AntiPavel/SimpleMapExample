@@ -24,15 +24,18 @@ final public class CarListViewController: UIViewController, Detailable {
         $0.register(CarListTableViewCell.self, forCellReuseIdentifier: CarListTableViewCell.className)
         return $0
     }(UITableView(frame: view.bounds, style: .plain))
+    
+    var refreshControl = UIRefreshControl()
 
     override public func viewDidLoad() {
         super.viewDidLoad()
-        addTableView()
     }
     
     init(viewModel: CarsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        addTableView()
+        addRefresh()
     }
     
     private func addTableView() {
@@ -46,14 +49,29 @@ final public class CarListViewController: UIViewController, Detailable {
     }
     
     func update() {
-        DispatchQueue.main.async {[weak self] in self?.tableView.reloadData() }
+        DispatchQueue.main.async {[weak self] in
+            self?.shouldFinishRefresh()
+            self?.tableView.reloadData() }
     }
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         update()
     }
+    
+    @objc private func fetchUpdate() {
+        viewModel.update()
+    }
+    
+    private func addRefresh() {
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(fetchUpdate), for: UIControl.Event.valueChanged)
+        tableView.addSubview(refreshControl)
+    }
 
+    func shouldFinishRefresh() {
+        refreshControl.endRefreshing()
+    }
 }
 
 extension CarListViewController: UITableViewDataSource {

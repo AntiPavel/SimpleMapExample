@@ -12,23 +12,47 @@ final public class TabBarViewController: UITabBarController {
     
     private (set) public var list: CarListViewController!
     private (set) public var maps: CarsMapViewController!
-    
     private var viewModel: CarsViewModel
+    private var spinner: UIActivityIndicatorView?
     
     init(viewModel: CarsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        delegate = self
+        setupViewControllers()
         self.viewModel.viewController = self
+        addRefreshButton()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    override public func viewDidLoad() {
-        super.viewDidLoad()
-        delegate = self
-        setupViewControllers()
+    
+    func addSpinner() {
+        removeSpinner()
+        spinner = UIActivityIndicatorView(style: .gray)
+        guard let spinerView = spinner else { return }
+        spinerView.startAnimating()
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 21, height: 21))
+        view.addSubview(spinerView)
+        spinerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        spinerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        navigationItem.titleView = view
+    }
+    
+    func removeSpinner() {
+        spinner?.stopAnimating()
+        spinner?.removeFromSuperview()
+        spinner = nil
+    }
+    
+    private func addRefreshButton() {
+        let button = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(fetchUpdate))
+        navigationItem.rightBarButtonItem = button
+    }
+    
+    @objc private func fetchUpdate() {
+        viewModel.update()
     }
     
     private func setupViewControllers() {
@@ -63,10 +87,9 @@ final public class TabBarViewController: UITabBarController {
         case .invalidResponse, .decodeError:
             details = "Something went wrong please try later"
         }
+        selectedViewController.shouldFinishRefresh()
         selectedViewController.showError(details, title: "Error!")
     }
 }
 
-extension TabBarViewController: UITabBarControllerDelegate {
-    
-}
+extension TabBarViewController: UITabBarControllerDelegate { }

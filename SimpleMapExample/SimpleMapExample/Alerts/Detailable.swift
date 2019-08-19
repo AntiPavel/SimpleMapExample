@@ -12,6 +12,7 @@ protocol Detailable {
     func showDetails(_ car: Car,
                      completion: @escaping () -> Void)
     func showError(_ message: String, title: String)
+    func shouldFinishRefresh()
 }
 
 extension Detailable where Self: UIViewController {

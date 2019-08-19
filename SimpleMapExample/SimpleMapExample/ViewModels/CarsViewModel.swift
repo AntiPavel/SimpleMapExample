@@ -29,12 +29,18 @@ class CarsViewModel {
     }
     
     func update() {
+        DispatchQueue.main.async { [weak self] in
+            self?.viewController?.addSpinner()
+        }
         dataReader.fetchCars { [weak self] result in
-            switch result {
-            case .success(let cars):
-                self?.cars = cars
-            case .failure(let error):
-                self?.viewController?.showError(error)
+            DispatchQueue.main.async { [weak self] in
+                self?.viewController?.removeSpinner()
+                switch result {
+                case .success(let cars):
+                    self?.cars = cars
+                case .failure(let error):
+                    self?.viewController?.showError(error)
+                }
             }
         }
     }

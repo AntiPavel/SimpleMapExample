@@ -69,7 +69,10 @@ final public class CarsMapViewController: UIViewController, Detailable {
         super.viewWillAppear(animated)
         update()
     }
-
+    
+    func shouldFinishRefresh() {
+        update()
+    }
 }
 
 extension CarsMapViewController: MKMapViewDelegate {
